@@ -6,7 +6,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Calendar from './View/calendar';
 import CreditDetail from './View/credit/CreditDetail';
-import Profile from './View/userProfile/profile'
+import Profile from './View/userProfile/profile';
+import Login from './View/Login';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const {
@@ -26,45 +28,57 @@ function App() {
         dir={dir()}
       >
         <Routes>
+          {/* <Route
+            path="/login"
+            element={<Login />}
+          /> */}
           <Route
             path="/calendar"
             element={
-              <div className="flex-1 flex items-center justify-center w-full">
-                <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
-                  <Calendar userId={3580}/>
+              <ProtectedRoute>
+                <div className="flex-1 flex items-center justify-center w-full">
+                  <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
+                    <Calendar userId={2566}/>
+                  </div>
                 </div>
-              </div>
+              </ProtectedRoute>
             }
           />
           <Route
             path="/credit-detail"
             element={
-              <div className="flex-1 flex items-center justify-center w-full">
-                <div className="w-full h-screen m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
-                  <CreditDetail userId={3580}/>
+              <ProtectedRoute>
+                <div className="flex-1 flex items-center justify-center w-full">
+                  <div className="w-full h-screen m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
+                    <CreditDetail userId={2566}/>
+                  </div>
                 </div>
-              </div>
+              </ProtectedRoute>
             }
           />
           <Route
             path="/profile"
             element={
-              <div className="flex-1 flex items-center justify-center w-full">
-                <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
-                  <Profile />
+              <ProtectedRoute>
+                <div className="flex-1 flex items-center justify-center w-full">
+                  <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
+                    <Profile />
+                  </div>
                 </div>
-              </div>
+              </ProtectedRoute>
             }
           />
           {/* ریدایرکت به /calendar برای مسیرهای دیگر */}
           <Route
             path="*"
             element={
-              <div className="flex-1 flex items-center justify-center w-full">
-                <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
-                  <Calendar userId={3580} />
+              <ProtectedRoute>
+                <div className="flex-1 flex items-center justify-center w-full">
+                  <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
+                    <Calendar userId={2566} />
+                  </div>
                 </div>
-              </div>
+              </ProtectedRoute>
             }
           />
         </Routes>
