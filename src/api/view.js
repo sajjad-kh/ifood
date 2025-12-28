@@ -17,7 +17,7 @@ export const fetchOtherApi = async (lang, date, deliveryPlaceId, setReservations
 // API سوم
 export const fetchThirdApi = async () => {
   try {
-    const res = await client.post(`/current_credit.json`);
+    const res = await client.post(`/current_credit`);
     return res.data;
   } catch (err) {
     const message = err.response?.data?.message || "خطا در دریافت اطلاعات";

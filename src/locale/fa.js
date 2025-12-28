@@ -1,5 +1,3 @@
-import { faYenSign } from "@fortawesome/free-solid-svg-icons";
-
 export const fa = {
     "welcome":"ورود",
     "typeLan":"متن فارسی هستش",
@@ -20,6 +18,9 @@ export const fa = {
     "description": "توضیحات",
     "noData" : "داده ای وجود ندارد",
     "reportCreditUser":"گزارش اعتبار کاربر",
+    "calendar": "تقویم",
+    "profile": "پروفایل", 
+    "credit": "اعتبار",
     "notGroup": "برای شما هیچ گروه کاری تعریف نشده است",
     "days": ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"],
     "pagination":{

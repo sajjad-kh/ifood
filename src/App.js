@@ -9,6 +9,7 @@ import CreditDetail from './View/credit/CreditDetail';
 import Profile from './View/userProfile/profile';
 import Login from './View/Login';
 import ProtectedRoute from './components/ProtectedRoute';
+import TestDashboard from './View/TestDashboard';
 
 function App() {
   const {
@@ -24,20 +25,24 @@ function App() {
   return (
     <Router>
       <div
-        className="h-full w-full flex flex-col bg-gray-50 p-1"
+        className="h-full w-full flex flex-col bg-gray-50"
         dir={dir()}
       >
         <Routes>
-          {/* <Route
+          <Route
             path="/login"
             element={<Login />}
-          /> */}
+          />
+          <Route
+            path="/test-dashboard"
+            element={<TestDashboard />}
+          />
           <Route
             path="/calendar"
             element={
               <ProtectedRoute>
-                <div className="flex-1 flex items-center justify-center w-full">
-                  <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
+                <div className="mt-2 pt-3 flex-1 flex items-center justify-center w-full">
+                  <div className="mt-8 w-full m-2 p-2 rounded-lg bg-[#E3F2FD]">
                     <Calendar userId={2566}/>
                   </div>
                 </div>
@@ -49,7 +54,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <div className="flex-1 flex items-center justify-center w-full">
-                  <div className="w-full h-screen m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
+                  <div className="w-full h-screen m-2 p-2 rounded-lg bg-[#E3F2FD]">
                     <CreditDetail userId={2566}/>
                   </div>
                 </div>
@@ -61,7 +66,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <div className="flex-1 flex items-center justify-center w-full">
-                  <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
+                  <div className="w-full m-2 p-2 rounded-lg bg-[#E3F2FD]">
                     <Profile />
                   </div>
                 </div>
@@ -73,8 +78,8 @@ function App() {
             path="*"
             element={
               <ProtectedRoute>
-                <div className="flex-1 flex items-center justify-center w-full">
-                  <div className="w-full m-2 p-2 mt-16 rounded-lg bg-[#E3F2FD]">
+                <div className="mt-2 pt-3 flex-1 flex items-center justify-center w-full">
+                  <div className="mt-8 w-full m-2 p-2 rounded-lg bg-[#E3F2FD]">
                     <Calendar userId={2566} />
                   </div>
                 </div>

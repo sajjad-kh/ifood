@@ -1,41 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../api/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate(); // فعلاً استفاده نمی‌شه
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     setLoading(true);
 
-    const redirectUrl = `${window.location.origin}/calendar`;
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = `${process.env.REACT_APP_API_BASE_URL}/users/sign_in?locale=fa&redirect_url=${encodeURIComponent(
-      redirectUrl
-    )}`;
-
-    const fields = {
-      utf8: '✓',
-      captcha: '',
-      'user[email]': email,
-      'user[password]': password,
-    };
-
-    Object.keys(fields).forEach((key) => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = fields[key];
-      form.appendChild(input);
-    });
-
-    document.body.appendChild(form);
-    form.submit();
+    try {
+      await login(email, password, true); // true = ریدایرکت کن
+      // اگه به اینجا رسید یعنی موفق بوده و redirect شده
+    } catch (err) {
+      console.error('Login error:', err);
+      setError(err.message || 'خطا در ورود به سیستم');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
